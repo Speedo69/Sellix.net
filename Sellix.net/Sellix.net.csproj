@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Blacklist\" />
+    <Folder Include="Models\Coupons\" />
+    <Folder Include="Models\Feedback\" />
+    <Folder Include="Models\Queries\" />
+    <Folder Include="Models\Products\" />
+    <Folder Include="Models\Orders\" />
+  </ItemGroup>
+
+</Project>
