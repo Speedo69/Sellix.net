@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Sellix.net.Helpers
 {
@@ -8,6 +10,12 @@ namespace Sellix.net.Helpers
         {
             string url = instance._apiUrl + endpoint;
             return await (await instance._httpClient.GetAsync(url)).Content.ReadAsStringAsync();
+        }
+        internal static Task<HttpResponseMessage> Post(string endpoint, Sellix instance, string json)
+        {
+            string url = instance._apiUrl + endpoint;
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            return Task.FromResult(instance._httpClient.PostAsync(url, content).Result);
         }
     }
 }

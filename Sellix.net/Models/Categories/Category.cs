@@ -2,18 +2,36 @@
 
 namespace Sellix.net.API.Categories.Models
 {
+    public class CategoryRoot
+    {
+        [JsonPropertyName("category")]
+        public Category Category { get; set; }
+    }
+
     public class Category
     {
-            [JsonPropertyName("id")]
+        public Category()
+        {
+        }
+        
+        public Category(bool unlisted, string title, int sortPriority, object[] productsBound)
+        {
+            Unlisted = unlisted;
+            Title = title;
+            SortPriority = sortPriority;
+            ProductsBound = productsBound;
+        }
+
+        [JsonPropertyName("id")]
             public int Id { get; set; }
             [JsonPropertyName("uniqid")]
             public string UniqueId { get; set; }
             [JsonPropertyName("shop_id")]
-            public string Title { get; set; }
-            [JsonPropertyName("unlisted")]
             public int Shop_id { get; set; }
+            [JsonPropertyName("unlisted")]
+            public bool Unlisted { get; set; }
             [JsonPropertyName("title")]
-            public int Unlisted { get; set; }
+            public string Title { get; set; } 
             [JsonPropertyName("sort_priority")]
             public int SortPriority { get; set; }
             [JsonPropertyName("products_bound")]

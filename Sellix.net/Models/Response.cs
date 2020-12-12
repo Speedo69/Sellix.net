@@ -5,12 +5,12 @@ using System.Text.Json.Serialization;
 
 namespace Sellix.net.API
 {
-    public class Response<DataType>
+    public class Response<DataModel>
     {
         [JsonPropertyName("status")]
         public int Status { get; set; }
         [JsonPropertyName("data")]
-        public DataType Data { get; set; }
+        public DataModel Data { get; set; }
         [JsonPropertyName("message")]
         public object Message { get; set; }
         [JsonPropertyName("log")]
