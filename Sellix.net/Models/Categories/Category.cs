@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using Sellix.net.Models.Products;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Sellix.net.API.Categories.Models
 {
@@ -14,12 +16,12 @@ namespace Sellix.net.API.Categories.Models
         {
         }
         
-        public Category(bool unlisted, string title, int sortPriority, object[] productsBound)
+        public Category(bool unlisted, string title, int sortPriority, string[] productsBoundIds)
         {
             Unlisted = unlisted;
             Title = title;
             SortPriority = sortPriority;
-            ProductsBound = productsBound;
+            ProductsBound = productsBoundIds;
         }
 
         [JsonPropertyName("id")]
@@ -44,5 +46,13 @@ namespace Sellix.net.API.Categories.Models
             public int UpdatedAt { get; set; }
             [JsonPropertyName("updated_by")]
             public int UpdatedBy { get; set; }
+            public Product[] GetProducts() {
+                if(ProductsBound.Length >= 1)
+                {
+                //this is utterly retarded, but i guess it works and i am too lazy to come up with proper solution.
+                return JsonSerializer.Deserialize<Product[]>(JsonSerializer.Serialize(ProductsBound));    
+                }
+                return null;
+            } 
     }
 }

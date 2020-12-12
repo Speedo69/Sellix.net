@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sellix.net.Converters;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -16,9 +17,9 @@ namespace Sellix.net.Models.Products
         [JsonPropertyName("name")]
         public string Name { get; set; }
         [JsonPropertyName("price")]
-        public float Price { get; set; }
+        public string Price { get; set; }
         [JsonPropertyName("price_display")]
-        public float PriceDisplay { get; set; }
+        public string PriceDisplay { get; set; }
         [JsonPropertyName("currency")]
         public string Currency { get; set; }
         [JsonPropertyName("title")]
@@ -48,7 +49,7 @@ namespace Sellix.net.Models.Products
         [JsonPropertyName("type")]
         public string Type { get; set; }
         [JsonPropertyName("gateways")]
-        public string[] Gateways { get; set; }
+        public object Gateways { get; set; }
         [JsonPropertyName("crypto_confirmations_needed")]
         public int CryptoConfNeeded { get; set; }
         [JsonPropertyName("max_risk_level")]
@@ -56,7 +57,7 @@ namespace Sellix.net.Models.Products
         [JsonPropertyName("block_vpn_proxies")]
         public bool BlockProxies { get; set; }
         [JsonPropertyName("private")]
-        public bool Private { get; set; }
+        public int Private { get; set; }
         [JsonPropertyName("stock")]
         public int Stock { get; set; }
         [JsonPropertyName("stock_delimiter")]
@@ -68,7 +69,7 @@ namespace Sellix.net.Models.Products
         [JsonPropertyName("dynamic_webhook")]
         public string DynamicWebhook { get; set; }
         [JsonPropertyName("unlisted")]
-        public bool Unlisted { get; set; }
+        public int Unlisted { get; set; }
         [JsonPropertyName("sort_priority")]
         public int SortPriority { get; set; }
         [JsonPropertyName("terms_of_service")]
@@ -78,11 +79,11 @@ namespace Sellix.net.Models.Products
         [JsonPropertyName("warranty_text")]
         public string WarrantyText { get; set; }
         [JsonPropertyName("created_at")]
-        public int CreatedAt { get; set; }
+        public int? CreatedAt { get; set; }
         [JsonPropertyName("updated_at")]
-        public int UpdatedAt { get; set; }
+        public int? UpdatedAt { get; set; }
         [JsonPropertyName("updated_by")]
-        public int UpdatedBy { get; set; }
+        public int? UpdatedBy { get; set; }
         [JsonPropertyName("webhooks")]
         public string[] Webhooks { get; set; }
         [JsonPropertyName("feedback")]
