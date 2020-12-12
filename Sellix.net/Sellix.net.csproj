@@ -9,7 +9,6 @@
     <Folder Include="Models\Coupons\" />
     <Folder Include="Models\Feedback\" />
     <Folder Include="Models\Queries\" />
-    <Folder Include="Models\Products\" />
     <Folder Include="Models\Orders\" />
   </ItemGroup>
 
