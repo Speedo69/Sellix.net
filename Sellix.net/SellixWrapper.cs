@@ -1,6 +1,8 @@
 ﻿using Sellix.net.API;
 using Sellix.net.API.Categories.Models;
 using Sellix.net.Helpers;
+using Sellix.net.Models.Coupons;
+using Sellix.net.Models.Feedback;
 using Sellix.net.Models.Products;
 using System.Net.Http;
 using System.Text.Json;
@@ -19,6 +21,7 @@ namespace Sellix.net
             _httpClient = httpClient;
             httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", secret);
         }
+        
     }
     public static class SellixWrapper
     {
@@ -35,7 +38,16 @@ namespace Sellix.net
         public static void DeleteProduct(this Sellix instance, string uniqueId) => RequestHelper.Delete("/products/" + uniqueId, instance);
         #endregion
         #region Feedback
+        public static Response<FeedbackRoot> GetFeedback(this Sellix instance, string uniqueId) => ParseHelper.ParseResponse<FeedbackRoot>(RequestHelper.Get("/feedback/" + uniqueId, instance).Result).Result;
+        public static Response<FeedbackList> GetFeedbacks(this Sellix instance) => ParseHelper.ParseResponse<FeedbackList>(RequestHelper.Get("/feedback", instance).Result).Result;
         public static void ReplyFeedback(this Sellix instance, string uniqueId, string reply) => RequestHelper.Post("/feedback/" + uniqueId, instance, JsonSerializer.Serialize(new { reply = reply }));
+        #endregion
+        #region Coupon
+        public static Response<CouponRoot> GetCoupon(this Sellix instance, string uniqueId) => ParseHelper.ParseResponse<CouponRoot>(RequestHelper.Get(" /coupons/" + uniqueId, instance).Result).Result;
+        public static Response<CouponList> GetCoupons(this Sellix instance) => ParseHelper.ParseResponse<CouponList>(RequestHelper.Get("/coupons", instance).Result).Result;
+        public static void CreateCoupon(this Sellix instance, Coupon coupon) => RequestHelper.Post("/coupons", instance, ParseHelper.ParseRequest(coupon).Result);
+        public static void UpdateCoupon(this Sellix instance, Coupon coupon) => RequestHelper.Put("/coupons/", instance, ParseHelper.ParseRequest(coupon).Result);
+        public static void DeleteCoupon(this Sellix instance, string uniqueId) => RequestHelper.Delete("/coupons/" + uniqueId, instance);
         #endregion
     }
 }

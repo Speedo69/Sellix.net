@@ -2,6 +2,11 @@
 
 namespace Sellix.net.Models.Feedback
 {
+    public class FeedbackRoot
+    {
+        [JsonPropertyName("feedback")]
+        public Feedback Feedback { get; set; }
+    }
     public class Feedback
     {
         [JsonPropertyName("id")]

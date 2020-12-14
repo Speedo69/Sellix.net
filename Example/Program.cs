@@ -6,6 +6,7 @@ namespace Example
     {
         static void Main(string[] args)
         {
+            //Your token goes here, very nice.
             var sellix = new Sellix.net.Sellix(Token.GetToken(), new System.Net.Http.HttpClient());
             var s = sellix.GetCategories();
             var u = sellix.GetCategory(s.Data.Categories[1].UniqueId);
@@ -13,6 +14,7 @@ namespace Example
             var t = u.Data.Category.GetProducts();
             var l = sellix.GetProduct(t[0].UniqueId);
             var ul = sellix.GetProdcuts();
+            var ll = sellix.GetFeedbacks();
         }
     }
 }
