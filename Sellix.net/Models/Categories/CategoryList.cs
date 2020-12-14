@@ -2,9 +2,9 @@
 
 namespace Sellix.net.API.Categories.Models
 {
-    public class Categories
+    public class CategoryList
     {
         [JsonPropertyName("categories")]
-        public Category[] categories { get; set; }
+        public Category[] Categories { get; set; }
     }
 }

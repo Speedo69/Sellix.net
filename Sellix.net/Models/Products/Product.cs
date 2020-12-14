@@ -6,20 +6,28 @@ using System.Text.Json.Serialization;
 
 namespace Sellix.net.Models.Products
 {
+    public class ProductRoot
+    {
+        [JsonPropertyName("product")]
+        public Product Product { get; set; }
+    }
+
     public class Product
     {
         [JsonPropertyName("id")]
         public int Id { get; set; }
         [JsonPropertyName("uniqid")]
-        public string Unique { get; set; }
+        public string UniqueId { get; set; }
         [JsonPropertyName("shop_id")]
         public int ShopId { get; set; }
         [JsonPropertyName("name")]
         public string Name { get; set; }
         [JsonPropertyName("price")]
-        public string Price { get; set; }
+        [JsonConverter(typeof(PriceConverter))]
+        public float Price { get; set; }
         [JsonPropertyName("price_display")]
-        public string PriceDisplay { get; set; }
+        [JsonConverter(typeof(PriceConverter))]
+        public float PriceDisplay { get; set; }
         [JsonPropertyName("currency")]
         public string Currency { get; set; }
         [JsonPropertyName("title")]
@@ -57,7 +65,8 @@ namespace Sellix.net.Models.Products
         [JsonPropertyName("block_vpn_proxies")]
         public bool BlockProxies { get; set; }
         [JsonPropertyName("private")]
-        public int Private { get; set; }
+        [JsonConverter(typeof(BoolConverter))]
+        public bool Private { get; set; }
         [JsonPropertyName("stock")]
         public int Stock { get; set; }
         [JsonPropertyName("stock_delimiter")]
@@ -69,7 +78,8 @@ namespace Sellix.net.Models.Products
         [JsonPropertyName("dynamic_webhook")]
         public string DynamicWebhook { get; set; }
         [JsonPropertyName("unlisted")]
-        public int Unlisted { get; set; }
+        [JsonConverter(typeof(BoolConverter))]
+        public bool Unlisted { get; set; }
         [JsonPropertyName("sort_priority")]
         public int SortPriority { get; set; }
         [JsonPropertyName("terms_of_service")]
