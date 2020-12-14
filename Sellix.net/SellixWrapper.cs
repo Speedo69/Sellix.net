@@ -3,6 +3,8 @@ using Sellix.net.API.Categories.Models;
 using Sellix.net.Helpers;
 using Sellix.net.Models.Products;
 using System.Net.Http;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Sellix.net
 {
@@ -32,6 +34,8 @@ namespace Sellix.net
         public static void UpdateProduct(this Sellix instance, Product product) => RequestHelper.Put("/products", instance, ParseHelper.ParseRequest(product).Result);
         public static void DeleteProduct(this Sellix instance, string uniqueId) => RequestHelper.Delete("/products/" + uniqueId, instance);
         #endregion
-
+        #region Feedback
+        public static void ReplyFeedback(this Sellix instance, string uniqueId, string reply) => RequestHelper.Post("/feedback/" + uniqueId, instance, JsonSerializer.Serialize(new { reply = reply }));
+        #endregion
     }
 }
