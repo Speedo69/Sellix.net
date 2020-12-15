@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using Sellix.net.API;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,11 +12,11 @@ namespace Sellix.net.Helpers
             string url = instance._apiUrl + endpoint;
             return await (await instance._httpClient.GetAsync(url)).Content.ReadAsStringAsync();
         }
-        internal static Task<HttpResponseMessage> Post(string endpoint, Sellix instance, string json)
+        internal static Task<Response<dynamic>> Post(string endpoint, Sellix instance, string json)
         {
             string url = instance._apiUrl + endpoint;
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            return Task.FromResult(instance._httpClient.PostAsync(url, content).Result);
+            return Task.FromResult(ParseHelper.ParseResponse<dynamic>(instance._httpClient.PostAsync(url, content).Result.Content.ReadAsStringAsync().Result).Result);
         }
         internal static Task<HttpResponseMessage> Put(string endpoint, Sellix instance, string json)
         {
@@ -23,10 +24,10 @@ namespace Sellix.net.Helpers
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             return Task.FromResult(instance._httpClient.PutAsync(url, content).Result);
         }
-        internal static void Delete(string endpoint, Sellix instance)
+        internal static Task<HttpResponseMessage> Delete(string endpoint, Sellix instance)
         {
             string url = instance._apiUrl + endpoint;
-            instance._httpClient.DeleteAsync(url);
+           return Task.FromResult (instance._httpClient.DeleteAsync(url).Result);
         }
     }
 }

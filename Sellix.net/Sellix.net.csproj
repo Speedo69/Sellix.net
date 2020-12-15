@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Blacklist\" />
     <Folder Include="Models\Queries\" />
     <Folder Include="Models\Orders\" />
   </ItemGroup>

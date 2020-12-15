@@ -1,5 +1,7 @@
 ﻿using System;
 using Sellix.net;
+using Sellix.net.Models.Products;
+
 namespace Example
 {
     class Program
@@ -8,13 +10,14 @@ namespace Example
         {
             //Your token goes here, very nice.
             var sellix = new Sellix.net.Sellix(Token.GetToken(), new System.Net.Http.HttpClient());
-            var s = sellix.GetCategories();
-            var u = sellix.GetCategory(s.Data.Categories[1].UniqueId);
-            //sellix.CreateCategory(new Sellix.net.API.Categories.Models.Category(false, "test2", 0, null));
-            var t = u.Data.Category.GetProducts();
-            var l = sellix.GetProduct(t[0].UniqueId);
-            var ul = sellix.GetProdcuts();
-            var ll = sellix.GetFeedbacks();
+            var prod = new Product();
+            prod.Title = "MegaTest";
+            prod.Description = "I like Cock";
+            prod.Price = 10f;
+            prod.Gateways = new object[] { "PAYPAL" };
+            prod.Type = ProductType.Service;
+            prod.DiscountValue = 10f;
+            var resp = sellix.CreateProduct(prod);
         }
     }
 }

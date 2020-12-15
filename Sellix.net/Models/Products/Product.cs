@@ -55,7 +55,8 @@ namespace Sellix.net.Models.Products
         [JsonPropertyName("custom_fields")]
         public CustomField[] CustomFields { get; set; }
         [JsonPropertyName("type")]
-        public string Type { get; set; }
+        [JsonConverter(typeof(ProductTypeConverter))]
+        public ProductType Type { get; set; }
         [JsonPropertyName("gateways")]
         public object Gateways { get; set; }
         [JsonPropertyName("crypto_confirmations_needed")]
@@ -73,8 +74,10 @@ namespace Sellix.net.Models.Products
         public string StockDelimiter { get; set; }
         [JsonPropertyName("serials")]
         public string[] Serials { get; set; }
-        [JsonPropertyName("serials_remove_duplicates")]
+        [JsonPropertyName("serials_remove_duplicates")] 
         public bool SerialsNoDuplicates { get; set; }
+        [JsonPropertyName("discount_value")]
+        public float DiscountValue { get; set; }
         [JsonPropertyName("dynamic_webhook")]
         public string DynamicWebhook { get; set; }
         [JsonPropertyName("unlisted")]
@@ -109,11 +112,11 @@ namespace Sellix.net.Models.Products
         [JsonPropertyName("required")]
         public bool Required { get; set; }
     }
-    public class ProductType
+    public enum ProductType
     {
-        public string File = "file";
-        public string Serials = "serials";
-        public string service = "service";
+        File = 0,
+        Service = 1,
+        Serials = 2
     }
     public class ProductFeedback
     {
