@@ -1,10 +1,10 @@
-﻿using Sellix.net.Converters;
+﻿using Sellix.Net.Converters;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Sellix.net.Models.Products
+namespace Sellix.Net.Models.Products
 {
     public class ProductRoot
     {

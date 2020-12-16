@@ -4,7 +4,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Sellix.net.Converters
+namespace Sellix.Net.Converters
 {
 
     //API v1 is literally retarded, the price gets returned either as a String or Single. WTF!

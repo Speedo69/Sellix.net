@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Sellix.net.Models.Coupons
+namespace Sellix.Net.Models.Coupons
 {
     public class CouponList
     {

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Sellix.net.API.Categories.Models
+namespace Sellix.Net.Models.Categories
 {
     public class CategoryList
     {

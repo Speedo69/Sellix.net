@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Sellix.net.Models.Feedback
+namespace Sellix.Net.Models.Feedback
 {
     public class FeedbackRoot
     {

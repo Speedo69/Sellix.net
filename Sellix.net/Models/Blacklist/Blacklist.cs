@@ -1,7 +1,7 @@
-﻿using Sellix.net.Converters.Blacklist;
+﻿using Sellix.Net.Converters.Blacklist;
 using System.Text.Json.Serialization;
 
-namespace Sellix.net.Models.Blacklist
+namespace Sellix.Net.Models.Blacklist
 {
     public class BlacklistRoot
     {
@@ -19,6 +19,8 @@ namespace Sellix.net.Models.Blacklist
         [JsonPropertyName("type")]
         [JsonConverter(typeof(BlacklistTypeConverter))]
         public BlacklistType Type { get; set; }
+        [JsonPropertyName("data")]
+        public string Data { get; set; }
         [JsonPropertyName("note")]
         public string Note { get; set; }
         [JsonPropertyName("created_at")]

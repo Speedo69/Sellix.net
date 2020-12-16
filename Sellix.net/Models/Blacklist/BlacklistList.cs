@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Sellix.net.Models.Blacklist
+namespace Sellix.Net.Models.Blacklist
 {
     public class BlacklistList
     {

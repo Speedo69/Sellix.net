@@ -1,14 +1,14 @@
-﻿using Sellix.net.API;
-using Sellix.net.API.Categories.Models;
-using Sellix.net.Helpers;
-using Sellix.net.Models.Blacklist;
-using Sellix.net.Models.Coupons;
-using Sellix.net.Models.Feedback;
-using Sellix.net.Models.Products;
+﻿using Sellix.Net.Helpers;
+using Sellix.Net.Models;
+using Sellix.Net.Models.Blacklist;
+using Sellix.Net.Models.Categories;
+using Sellix.Net.Models.Coupons;
+using Sellix.Net.Models.Feedback;
+using Sellix.Net.Models.Products;
 using System.Net.Http;
 using System.Text.Json;
 
-namespace Sellix.net
+namespace Sellix.Net
 {
     public class Sellix
     {
@@ -23,24 +23,32 @@ namespace Sellix.net
         }
         
     }
+    /// <summary>
+    /// Extentsion methods for Sellix, contains the actual wrapping functionality.
+    /// </summary>
     public static class SellixWrapper
     {
         #region Categories
         public static Response<CategoryList> GetCategories(this Sellix instance) => ParseHelper.ParseResponse<CategoryList>(RequestHelper.Get("/categories", instance).Result).Result;
         public static Response<CategoryRoot> GetCategory(this Sellix instance, string uniqueId) => ParseHelper.ParseResponse<CategoryRoot>(RequestHelper.Get("/categories/" + uniqueId, instance).Result).Result;
-        public static void CreateCategory(this Sellix instance, Category category) => RequestHelper.Post("/categories", instance, ParseHelper.ParseRequest(category).Result);
+        public static Response<UniqId> CreateCategory(this Sellix instance, Category category) => RequestHelper.Post("/categories", instance, ParseHelper.ParseRequest(category).Result).Result;
+        public static Response<UniqId> UpdateCategory(this Sellix instance, Category category) => RequestHelper.Put("/categories/" + category.UniqueId, instance, ParseHelper.ParseRequest(category).Result).Result;
+        public static Response<UniqId> UpdateCategory(this Sellix instance, Category category, string uniqueId) { category.UniqueId = uniqueId; return UpdateCategory(instance, category); }
+        public static Response<object> DeleteCategory(this Sellix instance, string uniqueId) => RequestHelper.Delete("/categories/" + uniqueId, instance).Result;
+        public static Response<object> DeleteCategory(this Sellix instance, Category category) => DeleteCategory(instance, category.UniqueId);
+
         #endregion
         #region Products
         public static Response<ProductRoot> GetProduct(this Sellix instance, string uniqueId) => ParseHelper.ParseResponse<ProductRoot>(RequestHelper.Get("/products/" + uniqueId, instance).Result).Result;
         public static Response<ProductList> GetProdcuts(this Sellix instance) => ParseHelper.ParseResponse<ProductList>(RequestHelper.Get("/products", instance).Result).Result;
-        public static Response<dynamic> CreateProduct(this Sellix instance, Product product) => RequestHelper.Post("/products", instance, ParseHelper.ParseRequest(product).Result).Result;
+        public static Response<UniqId> CreateProduct(this Sellix instance, Product product) => RequestHelper.Post("/products", instance, ParseHelper.ParseRequest(product).Result).Result;
         public static void UpdateProduct(this Sellix instance, Product product) => RequestHelper.Put("/products", instance, ParseHelper.ParseRequest(product).Result);
         public static void DeleteProduct(this Sellix instance, string uniqueId) => RequestHelper.Delete("/products/" + uniqueId, instance);
         #endregion
         #region Feedback
         public static Response<FeedbackRoot> GetFeedback(this Sellix instance, string uniqueId) => ParseHelper.ParseResponse<FeedbackRoot>(RequestHelper.Get("/feedback/" + uniqueId, instance).Result).Result;
         public static Response<FeedbackList> GetFeedbacks(this Sellix instance) => ParseHelper.ParseResponse<FeedbackList>(RequestHelper.Get("/feedback", instance).Result).Result;
-        public static void ReplyFeedback(this Sellix instance, string uniqueId, string reply) => RequestHelper.Post("/feedback/" + uniqueId, instance, JsonSerializer.Serialize(new { reply = reply }));
+        public static void ReplyFeedback(this Sellix instance, string uniqueId, string reply) => RequestHelper.Post("/feedback/" + uniqueId, instance, JsonSerializer.Serialize(new { reply }));
         #endregion
         #region Coupon
         public static Response<CouponRoot> GetCoupon(this Sellix instance, string uniqueId) => ParseHelper.ParseResponse<CouponRoot>(RequestHelper.Get(" /coupons/" + uniqueId, instance).Result).Result;
@@ -51,10 +59,12 @@ namespace Sellix.net
         #endregion
 
         #region Blacklist
-        public static Response<BlacklistRoot> GetBlacklist(this Sellix instance, string id) => ParseHelper.ParseResponse<BlacklistRoot>(RequestHelper.Get("/blacklist/" + id, instance).Result).Result;
-        public static Response<BlacklistList> GetBlacklists(this Sellix instance) => ParseHelper.ParseResponse<BlacklistList>(RequestHelper.Get("/blacklist", instance).Result).Result;
-        public static void CreateBlacklist(this Sellix instance, Blacklist blacklist) => RequestHelper.Post("/blacklist", instance, ParseHelper.ParseRequest(blacklist).Result);
-        public static void UpdateBlacklist(this Sellix instance, Blacklist blacklist, string uniqueId) => RequestHelper.Put("/blacklists/" + uniqueId, instance, ParseHelper.ParseRequest(blacklist).Result);
+        public static Response<BlacklistRoot> GetBlacklist(this Sellix instance, string id) => ParseHelper.ParseResponse<BlacklistRoot>(RequestHelper.Get("/blacklists/" + id, instance).Result).Result;
+        public static Response<BlacklistList> GetBlacklists(this Sellix instance) => ParseHelper.ParseResponse<BlacklistList>(RequestHelper.Get("/blacklists", instance).Result).Result;
+        public static Response<UniqId> CreateBlacklist(this Sellix instance, Blacklist blacklist) => RequestHelper.Post("/blacklists", instance, ParseHelper.ParseRequest(blacklist).Result).Result;
+        public static Response<UniqId> UpdateBlacklist(this Sellix instance, Blacklist blacklist) => RequestHelper.Put("/blacklists/" + blacklist.UniqueId, instance, ParseHelper.ParseRequest(blacklist).Result).Result;
+        public static Response<object> DeleteBlacklist(this Sellix instance, string uniqueId) => RequestHelper.Delete("/blacklists/" + uniqueId, instance).Result;
+
         
         #endregion
     }

@@ -1,11 +1,11 @@
-﻿using Sellix.net.Models.Blacklist;
+﻿using Sellix.Net.Models.Blacklist;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Sellix.net.Converters.Blacklist
+namespace Sellix.Net.Converters.Blacklist
 {
     public class BlacklistTypeConverter : JsonConverter<BlacklistType>
     {

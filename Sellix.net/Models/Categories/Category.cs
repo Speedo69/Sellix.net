@@ -1,8 +1,8 @@
-﻿using Sellix.net.Models.Products;
+﻿using Sellix.Net.Models.Products;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Sellix.net.API.Categories.Models
+namespace Sellix.Net.Models.Categories
 {
     public class CategoryRoot
     {

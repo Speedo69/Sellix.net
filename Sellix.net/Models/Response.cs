@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
-namespace Sellix.net.API
+namespace Sellix.Net.Models
 {
     public class Response<DataModel>
     {
@@ -19,5 +16,10 @@ namespace Sellix.net.API
         public string Error { get; set; }
         [JsonPropertyName("env")]
         public string Env { get; set; }
+    }
+    public class UniqId
+    {
+        [JsonPropertyName("uniqid")]
+        public string? UniqueId { get; set; }
     }
 }

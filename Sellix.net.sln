@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sellix.net", "Sellix.net\Sellix.net.csproj", "{F5C5A43B-C093-4F2C-82C2-D008FCB167B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sellix.Net", "Sellix.net\Sellix.Net.csproj", "{F5C5A43B-C093-4F2C-82C2-D008FCB167B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{CAFFE315-25E4-441F-9DD3-572B9106BF0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example", "Example\Example.csproj", "{CAFFE315-25E4-441F-9DD3-572B9106BF0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{DE17732C-9D7A-4EFF-BEA6-5A4A8355C166}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CAFFE315-25E4-441F-9DD3-572B9106BF0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAFFE315-25E4-441F-9DD3-572B9106BF0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAFFE315-25E4-441F-9DD3-572B9106BF0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE17732C-9D7A-4EFF-BEA6-5A4A8355C166}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE17732C-9D7A-4EFF-BEA6-5A4A8355C166}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE17732C-9D7A-4EFF-BEA6-5A4A8355C166}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE17732C-9D7A-4EFF-BEA6-5A4A8355C166}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

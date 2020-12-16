@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Sellix.net.Converters
+namespace Sellix.Net.Converters
 {
     public class StringToFloat : JsonConverter<float>
     {

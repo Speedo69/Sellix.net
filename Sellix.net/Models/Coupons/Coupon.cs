@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Sellix.net.Models.Coupons
+namespace Sellix.Net.Models.Coupons
 {
     public class CouponRoot
     {
