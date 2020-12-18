@@ -42,13 +42,15 @@ namespace Sellix.Net
         public static Response<ProductRoot> GetProduct(this Sellix instance, string uniqueId) => ParseHelper.ParseResponse<ProductRoot>(RequestHelper.Get("/products/" + uniqueId, instance).Result).Result;
         public static Response<ProductList> GetProdcuts(this Sellix instance) => ParseHelper.ParseResponse<ProductList>(RequestHelper.Get("/products", instance).Result).Result;
         public static Response<UniqId> CreateProduct(this Sellix instance, Product product) => RequestHelper.Post("/products", instance, ParseHelper.ParseRequest(product).Result).Result;
-        public static void UpdateProduct(this Sellix instance, Product product) => RequestHelper.Put("/products", instance, ParseHelper.ParseRequest(product).Result);
-        public static void DeleteProduct(this Sellix instance, string uniqueId) => RequestHelper.Delete("/products/" + uniqueId, instance);
+        public static Response<UniqId> UpdateProduct(this Sellix instance, Product product, string uniqueId) => RequestHelper.Put("/products/" + uniqueId, instance, ParseHelper.ParseRequest(product).Result).Result;
+        public static Response<UniqId> UpdateProduct(this Sellix instance, Product product) => UpdateProduct(instance, product, product.UniqueId);
+        public static Response<object> DeleteProduct(this Sellix instance, string uniqueId) => RequestHelper.Delete("/products/" + uniqueId, instance).Result;
         #endregion
         #region Feedback
         public static Response<FeedbackRoot> GetFeedback(this Sellix instance, string uniqueId) => ParseHelper.ParseResponse<FeedbackRoot>(RequestHelper.Get("/feedback/" + uniqueId, instance).Result).Result;
         public static Response<FeedbackList> GetFeedbacks(this Sellix instance) => ParseHelper.ParseResponse<FeedbackList>(RequestHelper.Get("/feedback", instance).Result).Result;
-        public static void ReplyFeedback(this Sellix instance, string uniqueId, string reply) => RequestHelper.Post("/feedback/" + uniqueId, instance, JsonSerializer.Serialize(new { reply }));
+        public static Response<UniqId> ReplyFeedback(this Sellix instance, string uniqueId, string reply) => RequestHelper.Post("/feedback/" + uniqueId, instance, JsonSerializer.Serialize(new { reply })).Result;
+        public static Response<UniqId> ReplyFeedback(this Sellix instance, Feedback feedback, string reply) => ReplyFeedback(instance, feedback.UniqueId, reply);
         #endregion
         #region Coupon
         public static Response<CouponRoot> GetCoupon(this Sellix instance, string uniqueId) => ParseHelper.ParseResponse<CouponRoot>(RequestHelper.Get(" /coupons/" + uniqueId, instance).Result).Result;
@@ -64,8 +66,7 @@ namespace Sellix.Net
         public static Response<UniqId> CreateBlacklist(this Sellix instance, Blacklist blacklist) => RequestHelper.Post("/blacklists", instance, ParseHelper.ParseRequest(blacklist).Result).Result;
         public static Response<UniqId> UpdateBlacklist(this Sellix instance, Blacklist blacklist) => RequestHelper.Put("/blacklists/" + blacklist.UniqueId, instance, ParseHelper.ParseRequest(blacklist).Result).Result;
         public static Response<object> DeleteBlacklist(this Sellix instance, string uniqueId) => RequestHelper.Delete("/blacklists/" + uniqueId, instance).Result;
-
-        
+        public static Response<object> DeleteBlacklist(this Sellix instance, Blacklist blacklist) => DeleteBlacklist(instance, blacklist.UniqueId);
         #endregion
     }
 }
