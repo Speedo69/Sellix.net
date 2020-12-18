@@ -8,7 +8,7 @@ namespace Example
     {
         static void Main(string[] args)
         {
-            //Your token goes here, very nice..
+            //Your token goes here, very nice.
             var sellix = new Sellix.Net.Sellix(Token.GetToken(), new System.Net.Http.HttpClient());
 
         }
