@@ -53,7 +53,7 @@ namespace Sellix.Net.Models.Products
         [JsonPropertyName("service_text")]
         public string ServiceText { get; set; }
         [JsonPropertyName("custom_fields")]
-        public CustomField[] CustomFields { get; set; }
+        public object[] CustomFields { get; set; }
         [JsonPropertyName("type")]
         [JsonConverter(typeof(ProductTypeConverter))]
         public ProductType Type { get; set; }
@@ -101,16 +101,6 @@ namespace Sellix.Net.Models.Products
         public string[] Webhooks { get; set; }
         [JsonPropertyName("feedback")]
         public ProductFeedback Feedback { get; set; }
-    }
-
-    public class CustomField
-    {
-        [JsonPropertyName("name")]
-        public string Name { get; set; }
-        [JsonPropertyName("type")]
-        public string Type { get; set; }
-        [JsonPropertyName("required")]
-        public bool Required { get; set; }
     }
     public enum ProductType
     {

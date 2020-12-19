@@ -31,6 +31,12 @@ namespace Tests
             Assert.Equal(200, updateProd.Status);
             Assert.NotNull(updateProd.Data.UniqueId);
 
+            var getProd = sellix.GetProduct(updateProd.Data.UniqueId);
+            Assert.Equal(200, getProd.Status);
+            Assert.NotNull(getProd.Data.Product);
+
+            var deleteProd = sellix.DeleteProduct(getProd.Data.Product.UniqueId);
+            Assert.Equal(200, deleteProd.Status);
         }
     }
 }
