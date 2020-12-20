@@ -1,6 +1,6 @@
 language: csharp
 solution: Sellix.net.sln
-
+mono: none
 install:
   - dotnet restore
 script:
