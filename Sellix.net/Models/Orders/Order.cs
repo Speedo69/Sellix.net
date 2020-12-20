@@ -1,4 +1,5 @@
 ﻿using Sellix.Net.Converters;
+using Sellix.Net.Converters.Order;
 using Sellix.Net.Models.Products;
 using System.Text.Json.Serialization;
 
@@ -82,6 +83,28 @@ namespace Sellix.Net.Models.Orders
         public string DeveloperWebhook { get; set; }
         [JsonPropertyName("developer_return_url")]
         public string DeveloperReturnUrl { get; set; }
+        [JsonPropertyName("status")]
+        public OrderStatus Status { get; set; }
+        [JsonPropertyName("to_process")]
+        public bool ToProcess { get; set; }
+        [JsonPropertyName("discount")]
+        public float Discount { get; set; }
+        [JsonPropertyName("fee_fixed")]
+        public float FixedFee { get; set; }
+        [JsonPropertyName("fee_percentage")]
+        public float FeePercentage { get; set; }
+        [JsonPropertyName("day_value")]
+        public int DayValue { get; set; }
+        [JsonPropertyName("day")]
+        public string Day { get; set; }
+        [JsonPropertyName("month")]
+        public string Month { get; set; }
+        [JsonPropertyName("year")]
+        public int Year { get; set; }
+        [JsonPropertyName("created_at")]
+        public ulong? CreatedAt { get; set; }
+        public string[] Serials { get; set; }
+
     }
 
     public enum OrderStatus
@@ -107,4 +130,24 @@ namespace Sellix.Net.Models.Orders
         CheckoutOrderCompleted,
         CustomerDisputeCreated
     }
+
+    public class OrderStatusHistory
+    {
+        public OrderStatusInfo[] StatusArray { get; set; }
+    }
+    public class OrderStatusInfo
+    {
+        [JsonPropertyName("created_at")]
+        public ulong? CreatedAt { get; set; }
+        [JsonPropertyName("details")]
+        public string Details { get; set; }
+        [JsonPropertyName("id")]
+        public string Id { get; set; }
+        [JsonPropertyName("invoice_id")]
+        public string InvoiceId { get; set; }
+        [JsonPropertyName("status")]
+        [JsonConverter(typeof(OrderStatusConverter))]
+        public OrderStatus Status { get; set; }
+    }
+
 }
