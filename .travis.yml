@@ -7,5 +7,5 @@ install:
 script:
   - dotnet build
   - dotnet test 
-  if: branch = release 
+  if: branch = master
   - dotnet pack ./Sellix.net/Sellix.Net.csproj -c Release
