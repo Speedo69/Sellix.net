@@ -129,7 +129,6 @@ namespace Sellix.Net.Models.Orders
         CheckoutOrderCompleted,
         CustomerDisputeCreated
     }
-
     public class OrderStatusHistory
     {
         [JsonPropertyName("status_history")]
