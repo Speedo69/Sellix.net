@@ -106,7 +106,6 @@ namespace Sellix.Net.Models.Orders
         public string[] Serials { get; set; }
 
     }
-
     public enum OrderStatus
     {
         Pending,
@@ -133,6 +132,7 @@ namespace Sellix.Net.Models.Orders
 
     public class OrderStatusHistory
     {
+        [JsonPropertyName("status_history")]
         public OrderStatusInfo[] StatusArray { get; set; }
     }
     public class OrderStatusInfo
@@ -149,5 +149,4 @@ namespace Sellix.Net.Models.Orders
         [JsonConverter(typeof(OrderStatusConverter))]
         public OrderStatus Status { get; set; }
     }
-
 }
