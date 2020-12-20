@@ -1,3 +1,4 @@
-[![Build Status](https://travis-ci.com/Speedo69/Sellix.net.svg?branch=master)](https://travis-ci.com/Speedo69/Sellix.net)
+![Travis (.com)](https://img.shields.io/travis/com/Speedo69/Sellix.net?style=for-the-badge)
+![Nuget](https://img.shields.io/nuget/v/sellix.net?style=for-the-badge)
 # Sellix.net
 Sellix wrapper written in C#
