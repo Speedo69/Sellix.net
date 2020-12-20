@@ -14,9 +14,9 @@ namespace Sellix.Net.Converters
             var value = reader.GetString();
             return value switch
             {
-                "serials" => ProductType.Serials,
-                "file" => ProductType.File,
-                "service" => ProductType.Service,
+                "SERIALS" => ProductType.Serials,
+                "FILE" => ProductType.File,
+                "SERVICE" => ProductType.Service,
                 _ => throw new Exception("Could not parse ProductType"),
             };
         }
@@ -25,9 +25,9 @@ namespace Sellix.Net.Converters
         {
             string jsonV = value switch
             {
-                ProductType.Serials => "serials",
-                ProductType.File => "file",
-                ProductType.Service => "service",
+                ProductType.Serials => "SERIALS",
+                ProductType.File => "FILE",
+                ProductType.Service => "SERVICE",
                 _ => "null",
             };
             writer.WriteStringValue(jsonV);

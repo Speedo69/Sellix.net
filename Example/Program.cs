@@ -10,7 +10,6 @@ namespace Example
         {
             //Your token goes here, very nice.
             var sellix = new Sellix.Net.Sellix(Token.GetToken(), new System.Net.Http.HttpClient());
-
         }
     }
 }
