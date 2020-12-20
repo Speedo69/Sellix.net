@@ -30,11 +30,11 @@ namespace Tests
 
             //edit blacklist
             blacklist.Data = "us";
-            var editBl = sellix.UpdateBlacklist(blacklist);
+            var editBl = sellix.UpdateBlacklist(blacklist, createBl.Data.UniqueId);
             Assert.Equal(200, editBl.Status);
 
             //get and check for edit
-            var checkBl = sellix.GetBlacklist(allBl.Data.Blacklists[0].UniqueId);
+            var checkBl = sellix.GetBlacklist(createBl.Data.UniqueId);
             Assert.Equal(200, checkBl.Status);
             Assert.NotNull(checkBl.Data.Blacklist.UniqueId);
             Assert.Equal("us", checkBl.Data.Blacklist.Data);
