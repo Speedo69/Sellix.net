@@ -11,6 +11,6 @@ script:
 deploy: 
  skip_cleanup: true
  provider: script
- script: bash ./release.sh $NUGET_API_KEY
+ script: sh ./release.sh $NUGET_API_KEY
  on: 
    branch: master
