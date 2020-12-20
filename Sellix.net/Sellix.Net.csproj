@@ -1,41 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Authors>Speedo69</Authors>
-    <Description>Managed Sellix.IO Wrapper for .NET Applications</Description>
-    <Copyright />
-    <PackageProjectUrl>https://github.com/Speedo69/Sellix.net/</PackageProjectUrl>
-    <PackageIcon>single-less-border.png</PackageIcon>
-    <RepositoryUrl>https://github.com/Speedo69/Sellix.net/</RepositoryUrl>
-    <RepositoryType>Git</RepositoryType>
-    <PackageTags>Sellix, Sellix.IO, Sellix.Net, Sellix Shop,</PackageTags>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <Optimize>true</Optimize>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Models\Queries\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Text.Json" Version="5.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\..\..\..\Downloads\LICENSE.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="..\..\..\..\Downloads\single-less-border.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
 </Project>
