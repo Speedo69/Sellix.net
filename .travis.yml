@@ -1,11 +1,16 @@
 language: csharp
 solution: Sellix.net.sln
 mono: none
+os: linux
 dotnet: 3.1.10
 install:
   - dotnet restore
 script:
   - dotnet build
   - dotnet test 
-  if: branch = master
-  - dotnet pack ./Sellix.net/Sellix.Net.csproj -c Release
+deploy: 
+ skip_cleanup: true
+ provider: script
+ script: chmod+x ./scripts/release.sh && ./scripts/release.sh $NUGET_API_KEY $NUGET_SOURCE
+ on: 
+   branch: master
