@@ -1,0 +1,8 @@
+language: csharp
+solution: Sellix.net.sln
+
+install:
+  - dotnet restore
+script:
+  - dotnet build
+  - dotnet test 
