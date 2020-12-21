@@ -103,7 +103,17 @@ namespace Sellix.Net.Models.Orders
         public int Year { get; set; }
         [JsonPropertyName("created_at")]
         public ulong? CreatedAt { get; set; }
+        [JsonPropertyName("serials")]
         public string[] Serials { get; set; }
+        [JsonPropertyName("status_history")]
+        public OrderStatusInfo[] StatusHistory { get; set; }
+        [JsonPropertyName("file")]
+        public SellixFile File { get; set; }
+        public string[] Webhooks { get; set; }
+        [JsonPropertyName("crypto_payout")]
+        public bool CryptoPayout { get; set; }
+        [JsonPropertyName("crypto_payout_transaction")]
+        public CryptoTransaction CryptoPayoutTransaction { get; set; }
 
     }
     public enum OrderStatus
