@@ -4,6 +4,7 @@ using Sellix.Net.Models.Blacklist;
 using Sellix.Net.Models.Categories;
 using Sellix.Net.Models.Coupons;
 using Sellix.Net.Models.Feedback;
+using Sellix.Net.Models.Orders;
 using Sellix.Net.Models.Products;
 using System.Net.Http;
 using System.Text.Json;
@@ -60,7 +61,6 @@ namespace Sellix.Net
         public static void UpdateCoupon(this Sellix instance, Coupon coupon) => RequestHelper.Put("/coupons/", instance, ParseHelper.ParseRequest(coupon).Result);
         public static void DeleteCoupon(this Sellix instance, string uniqueId) => RequestHelper.Delete("/coupons/" + uniqueId, instance);
         #endregion
-
         #region Blacklist
         public static Response<BlacklistRoot> GetBlacklist(this Sellix instance, string id) => ParseHelper.ParseResponse<BlacklistRoot>(RequestHelper.Get("/blacklists/" + id, instance).Result).Result;
         public static Response<BlacklistList> GetBlacklists(this Sellix instance) => ParseHelper.ParseResponse<BlacklistList>(RequestHelper.Get("/blacklists", instance).Result).Result;
@@ -69,6 +69,10 @@ namespace Sellix.Net
         public static Response<UniqId> UpdateBlacklist(this Sellix instance, Blacklist blacklist) => RequestHelper.Put("/blacklists/" + blacklist.UniqueId, instance, ParseHelper.ParseRequest(blacklist).Result).Result;
         public static Response<object> DeleteBlacklist(this Sellix instance, string uniqueId) => RequestHelper.Delete("/blacklists/" + uniqueId, instance).Result;
         public static Response<object> DeleteBlacklist(this Sellix instance, Blacklist blacklist) => DeleteBlacklist(instance, blacklist.UniqueId);
+        #endregion
+        #region Orders
+        public static Response<OrderRoot> GetOrder(this Sellix instance, string uniqid) => ParseHelper.ParseResponse<OrderRoot>(RequestHelper.Get("/orders/" + uniqid, instance).Result).Result;
+        public static Response<OrderList> GetOrders(this Sellix instance) => ParseHelper.ParseResponse<OrderList>(RequestHelper.Get("/orders", instance).Result).Result;
         #endregion
     }
 }
