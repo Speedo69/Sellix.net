@@ -5,6 +5,12 @@ using System.Text.Json.Serialization;
 
 namespace Sellix.Net.Models.Orders
 {
+    public class OrderRoot
+    {
+        [JsonPropertyName("order")]
+        public Order Order { get; set; }
+    }
+
     public class Order
     {
         [JsonPropertyName("id")]
@@ -114,6 +120,9 @@ namespace Sellix.Net.Models.Orders
         public bool CryptoPayout { get; set; }
         [JsonPropertyName("crypto_payout_transaction")]
         public CryptoTransaction CryptoPayoutTransaction { get; set; }
+        [JsonPropertyName("product")]
+        public Product Product { get; set; }
+
 
     }
     public enum OrderStatus
