@@ -4,7 +4,6 @@
 
 # Sellix.net
 Sellix.IO API Wrapper written with C#/.NET Standard 2.1 & :heartpulse:
-Supports Framework and Core!
 
 # How to Use
   Include Sellix.Net,
