@@ -3,7 +3,8 @@
 [![Nuget](https://img.shields.io/nuget/dt/sellix.net?style=flat-square)](https://www.nuget.org/packages/Sellix.Net/)
 
 # Sellix.net
-Sellix.IO API Wrapper written with C# & :heartpulse:
+Sellix.IO API Wrapper written with C#/.NET Standard 2.1 & :heartpulse:
+Supports Framework and Core!
 
 # How to Use
   Include Sellix.Net,
