@@ -16,6 +16,6 @@ Sellix.IO API Wrapper written with C# & :heartpulse:
   ```
   Enjoy!
   ```C#   
-   Sellix.GetOrders();
+   Sellix.Orders.GetOrders();
   ```
   For documentation please refer to https://developers.sellix.io/
