@@ -7,7 +7,6 @@ using System.Text.Json.Serialization;
 namespace Sellix.Net.Converters
 {
 
-    //API v1 is literally retarded, the price gets returned either as a String or Single. WTF!
     public class PriceConverter : JsonConverter<float>
     {
         public override float Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

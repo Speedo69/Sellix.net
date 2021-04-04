@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Queries\" />
+    <Compile Remove="Models\Queries\**" />
+    <EmbeddedResource Remove="Models\Queries\**" />
+    <None Remove="Models\Queries\**" />
   </ItemGroup>
 
   <ItemGroup>

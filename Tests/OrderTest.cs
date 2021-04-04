@@ -9,7 +9,7 @@ namespace Tests
         public void Test()
         {
             Sellix.Net.Sellix sellix = new Sellix.Net.Sellix(Token.Get, new System.Net.Http.HttpClient());
-            var orders = sellix.GetOrders();
+            var orders = sellix.Orders.GetOrders();
             Assert.Equal(200, orders.Status);
         }
     }

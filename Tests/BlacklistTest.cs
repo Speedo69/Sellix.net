@@ -11,7 +11,7 @@ namespace Tests
         [Fact]
         public void Test()
         {
-            //Create a blacklist
+            //Create a blacklist.
             var blacklist = new Blacklist
             {
                 Type = BlacklistType.country,
@@ -19,30 +19,30 @@ namespace Tests
                 Note = "They steal your lands"
             };
 
-            var createBl = sellix.CreateBlacklist(blacklist);
+            var createBl = sellix.Blacklist.CreateBlacklist(blacklist);
             Assert.Equal(200, createBl.Status);
             Assert.NotNull(createBl.Data.UniqueId);
 
-            //Get all blacklists
-            var allBl = sellix.GetBlacklists();
+            //Get all blacklists.
+            var allBl = sellix.Blacklist.GetBlacklists();
             Assert.Equal(200, allBl.Status);
             Assert.NotNull(allBl.Data.Blacklists[0]);
 
-            //edit blacklist
+            //Edit blacklist.
             blacklist.Data = "us";
-            var editBl = sellix.UpdateBlacklist(blacklist, createBl.Data.UniqueId);
+            var editBl = sellix.Blacklist.UpdateBlacklist(blacklist, createBl.Data.UniqueId);
             Assert.Equal(200, editBl.Status);
 
-            //get and check for edit
-            var checkBl = sellix.GetBlacklist(createBl.Data.UniqueId);
+            //Get and check for edit.
+            var checkBl = sellix.Blacklist.GetBlacklist(createBl.Data.UniqueId);
             Assert.Equal(200, checkBl.Status);
             Assert.NotNull(checkBl.Data.Blacklist.UniqueId);
             Assert.Equal("us", checkBl.Data.Blacklist.Data);
 
-            //delete all blacklists
+            //Delete all blacklists.
             foreach (var bl in allBl.Data.Blacklists)
             {
-               Assert.Equal(200, sellix.DeleteBlacklist(bl.UniqueId).Status);
+               Assert.Equal(200, sellix.Blacklist.DeleteBlacklist(bl.UniqueId).Status);
             }    
         }
     }

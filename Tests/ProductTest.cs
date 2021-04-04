@@ -1,8 +1,9 @@
-﻿using Sellix.Net.Models.Products;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Sellix.Net;
+using Sellix.Net.Models.Products;
 using Xunit;
 
 namespace Tests
@@ -23,19 +24,19 @@ namespace Tests
             product.ServiceText = "Get scammed fool";
             product.DiscountValue = 0f;
 
-            var createProd = sellix.CreateProduct(product);
+            var createProd = sellix.Products.CreateProduct(product);
             Assert.Equal(200, createProd.Status);
             Assert.NotNull(createProd.Data.UniqueId);
 
-            var updateProd = sellix.UpdateProduct(product, createProd.Data.UniqueId);
+            var updateProd = sellix.Products.UpdateProduct(product, createProd.Data.UniqueId);
             Assert.Equal(200, updateProd.Status);
             Assert.NotNull(updateProd.Data.UniqueId);
 
-            var getProd = sellix.GetProduct(updateProd.Data.UniqueId);
+            var getProd = sellix.Products.GetProduct(updateProd.Data.UniqueId);
             Assert.Equal(200, getProd.Status);
             Assert.NotNull(getProd.Data.Product);
 
-            var deleteProd = sellix.DeleteProduct(getProd.Data.Product.UniqueId);
+            var deleteProd = sellix.Products.DeleteProduct(getProd.Data.Product.UniqueId);
             Assert.Equal(200, deleteProd.Status);
         }
     }
